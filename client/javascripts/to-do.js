@@ -2,6 +2,10 @@
 
 let controller = function() {
 
+  if (localStorage.getItem("commentsList")) {
+    $(".comments").html(localStorage.getItem("commentsList"));
+  }
+
   let addCommentFromInputBox = function() {
     //Semmy uses "$" to name variables that will contain jQuery objects
     let $new_comment;
@@ -12,6 +16,9 @@ let controller = function() {
       $(".comments").append($new_comment);
       //$new_comment.fadeIn();
       $(".comment-input input").val("");
+
+      localStorage.setItem ("commentsList", $(".comments").html());
+      console.log(localStorage.getItem("commentsList"));
     }
   };
 
